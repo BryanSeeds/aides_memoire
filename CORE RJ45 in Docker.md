@@ -32,4 +32,4 @@ Note that this is a temporary change until reboot, to enable permanent IP Forwar
 
 And that's it. The PC Container Node should now be able to successfully reach a real world location via the RJ45 Link Layer Node.
 
-![Alt text](https://github.com/BryanSeeds/aides_memoire/CORE-Emulator-RJ45-in-Docker/core_rj45_ping.jpg "CORE GUI Screenshot")
+![Alt text](https://github.com/BryanSeeds/aides_memoire/blob/CORE-Emulator-RJ45-in-Docker/core_rj45_ping.jpg "CORE GUI Screenshot")
