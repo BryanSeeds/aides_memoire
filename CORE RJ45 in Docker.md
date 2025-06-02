@@ -31,3 +31,5 @@ Done. Except if you connect a PC Container Node to an RJ45 Link Layer Node and t
 Note that this is a temporary change until reboot, to enable permanent IP Forwarding, edit the */etc/sysctl.conf* file instead (not recommended).
 
 And that's it. The PC Container Node should now be able to successfully reach a real world location via the RJ45 Link Layer Node.
+
+![Alt text](https://github.com/BryanSeeds/aides_memoire/CORE-Emulator-RJ45-in-Docker/core_rj45_ping.jpg "CORE GUI Screenshot")
