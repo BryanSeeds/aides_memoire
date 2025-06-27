@@ -16,6 +16,74 @@ The end of this adventure however is a virtualisation host error. Our corporate 
 A similar issue occurs with VirtualBox.
 
 
-# Plan B - Docker Install
+# Plan B - Manual Install
+
+For my first SP installation, I selected worldmap_sp (as it's best to see something working, right.)
+
+The first requirement is to get the code from the private GitHub repo, using a CLASSIC PAT:
+
+git clone https://GITHUB_USERNAME:GITHUB_PAT@github.com:SCP-Development/worldmap-sp.git
+
+The code is reliant on many other modules, and it is important to ensure all of these are also installed. 
+Some are public, such as Flask, Flask-SocketIO, loguru, 
+others, such as dcs, scp, scp-json-validator, scptracks, worldmap-sp, must be downloaded from GitHub.
+
+The SP requires a config file (config.json), the path to which is passed as a command line argument.
+(If running the code in VS, launch.json must be edited accordingly!)
+
+There are a few variations of config in the examples on GitHub, but my config.json file contains:
+
+{
+
+  "worldmap_port": "8080",
+  
+  "listen_url": "http://worldmap-sp:20200",
+  
+  "implement": ["consumer"],
+  
+  "node": {
+  
+    "scp_version": "SCP-0.1-poc",
+    
+    "local_pop": "http://pop:19316",
+    
+    "metadata_sp": "metadataSP.json",
+    
+    "service_discovery": {
+    
+        "query_string": "rs_title == 'TracksService'",
+        
+        "query_interval": 5,
+        
+        "query_timeout": 100
+        
+    },
+    
+    "known_services_store": "~/var/known_services_store.json"
+    
+  },
+  
+  "log_level": "DEBUG",
+  
+  "log_file": "~/var/worldmap_sp.log",
+  
+  "db_path": "~/var/SubscriptionPersistence.db",
+  
+  "transport": "httptransport"
+  
+}
+
+
+* NOTE:  I have changed the log and db file path from /var to ~/var. /var is owned by root and permissions to create files will be denied.
+sudo allows access, but as sudo does not inherit user environment variables, the python venv will not be used and the installed modules will be unavailable.
+
+It should now be possible to run the SP with python:
+
+python3 sp.py config.json
+
+* NOTE: A POP must be running or a communication error will be thrown. Also, as the SP connects using the pop hostname rather than IP address it must be resolvable. I added an entry to the system hosts file.
+
+The WorldMap SP should now be running, and browsing to http://localhost:8080 should display an interactive world map!
+
 
 TBC.../
