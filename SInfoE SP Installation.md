@@ -1,4 +1,4 @@
-## A capture of my efforts to install an SInfoE AIS Producer SP.
+## A capture of my efforts to install an SInfoE SP.
 
 # Plan A - Vagrant Install
 
@@ -81,9 +81,26 @@ It should now be possible to run the SP with python:
 
 python3 sp.py config.json
 
-* NOTE: A POP must be running or a communication error will be thrown. Also, as the SP connects using the pop hostname rather than IP address it must be resolvable. I added an entry to the system hosts file.
+* NOTE: The python code needs to be called from somewhere. If you are not calling it from elsewhere then add a run() command at the end of the listing.
+
+* NOTE: A POP must be running or a communication error will be thrown. Also, as the SP connects using the pop hostname rather than IP address it must be resolvable. I added an entry to the system hosts file. Similarly, worldmap_sp also needs an entry.
 
 The WorldMap SP should now be running, and browsing to http://localhost:8080 should display an interactive world map!
 
+<br>
+
+Having successfully installed a consumer SP, a producer SP should be easy right? Erm... 
+
+<br>
+
+All SPs do not use the same versions of python libraries!
+
+Start by creating a new python venv and installing the required packages, noting you may need old versions of some packages.
+
+New config files will be required. I will upload examples once I am sure everything is working correctly.
+
+An entry will be required in the system hosts file with the SP name. Check the name carefully as there can be variation amongst SPs, e.g. use of - and _ within the name.
+
 
 TBC.../
+
